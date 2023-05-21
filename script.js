@@ -34,3 +34,34 @@ function playRound(playerSelection, computerSelection) {
 
     return `You lose! ${computerSelection} beats ${playerFixed.toLowerCase()}.`;
 }
+
+function game() {
+    let playerScore = 0;
+    let computerScore = 0;
+
+    for (let i = 0; i < 5; i++) {
+        const playerSelection = prompt("Rock, Paper or Scissors?: ");
+        const computerSelection = getComputerChoice();
+
+        console.log(`The computer chose ${computerSelection.toLowerCase()}.`);
+
+        const result = playRound(playerSelection, computerSelection);
+        console.log(result);
+
+        if (result[4] === "w") { 
+            playerScore++;
+        } else {
+            computerScore++;
+        }
+    }
+
+    if (playerScore === computerScore) {
+        console.log("The game has ended in a tie!");
+    } else if (playerScore > computerScore) {
+        console.log("You won the game!");
+    } else {
+        console.log("The computer won the game!");
+    }
+}
+
+game();
